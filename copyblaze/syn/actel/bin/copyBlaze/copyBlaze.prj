@@ -1,0 +1,254 @@
+KEY LIBERO "9.1"
+KEY CAPTURE "9.1.3.4"
+KEY DEFAULT_IMPORT_LOC "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\sim\rtl_sim\src"
+KEY DEFAULT_OPEN_LOC ""
+KEY ProjectID "a39f5363-c224-448a-9ca0-713b09e886ae"
+KEY HDLTechnology "VHDL"
+KEY VendorTechnology_Family "ProASIC3"
+KEY VendorTechnology_Die "IS4X4M1"
+KEY VendorTechnology_Package "vq100"
+KEY ProjectLocation "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\syn\actel\bin\copyBlaze"
+KEY SimulationType "VHDL"
+KEY Vendor "Actel"
+KEY ActiveRoot "cp_copyBlaze_ecoSystem::work"
+LIST REVISIONS
+VALUE="Impl1",NUM=1
+CURREV=1
+ENDLIST
+LIST FileManager
+VALUE "<project>\constraint\copyBlaze.sdc,sdc"
+STATE="utd"
+TIME="1321630212"
+SIZE="556"
+ENDFILE
+VALUE "<project>\designer\impl1\cp_copyBlaze_ecoSystem.adb,adb"
+STATE="ood"
+TIME="1321631934"
+SIZE="2098688"
+ENDFILE
+VALUE "<project>\synthesis\cp_copyBlaze_ecoSystem.edn,syn_edn"
+STATE="ood"
+TIME="1321630277"
+SIZE="1593919"
+ENDFILE
+VALUE "<project>\synthesis\cp_copyBlaze_ecoSystem_sdc.sdc,syn_sdc"
+STATE="ood"
+TIME="1321630277"
+SIZE="379"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\bench\vhdl\tb_copyBlaze_ecoSystem.vhd,hdl"
+STATE="utd"
+TIME="1321629728"
+SIZE="11866"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_Alu.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="7869"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_BancRegister.vhd,hdl"
+STATE="utd"
+TIME="1321629310"
+SIZE="4055"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_CLAAdder.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="3734"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_copyBlaze.vhd,hdl"
+STATE="utd"
+TIME="1321629302"
+SIZE="25668"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_copyBlaze_ecoSystem.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="9694"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_DecodeControl.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="10271"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_Flags.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="3950"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_FullAdder.vhd,hdl"
+STATE="utd"
+TIME="1321628182"
+SIZE="2614"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_Interrupt.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="4703"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_ProgramCounter.vhd,hdl"
+STATE="utd"
+TIME="1321628182"
+SIZE="3526"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_ProgramFlowControl.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="8809"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_ROM_Code.vhd,hdl"
+STATE="utd"
+TIME="1321634594"
+SIZE="22452"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_ScratchPad.vhd,hdl"
+STATE="utd"
+TIME="1321628182"
+SIZE="3633"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_Stack.vhd,hdl"
+STATE="utd"
+TIME="1321628182"
+SIZE="4677"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_Toggle.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="5045"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_Usefull_Pkg.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="3492"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\tb_copyBlaze_ecoSystem.vhd,hdl"
+STATE="utd"
+TIME="1321628181"
+SIZE="11866"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\WBOPRT08.vhd,hdl"
+STATE="utd"
+TIME="1321628182"
+SIZE="897"
+IS_READONLY="TRUE"
+ENDFILE
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\sim\rtl_sim\src\WBOPRT08.vhd,hdl"
+STATE="utd"
+TIME="1321630856"
+SIZE="897"
+IS_READONLY="TRUE"
+ENDFILE
+ENDLIST
+LIST UsedFile
+ENDLIST
+LIST NewModulesInfo
+LIST "cp_copyBlaze_ecoSystem::work"
+FILE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\rtl\vhdl\cp_copyBlaze_ecoSystem.vhd,hdl"
+LIST SynthesisConstraints
+VALUE "<project>\constraint\copyBlaze.sdc,sdc"
+ENDLIST
+ENDLIST
+ENDLIST
+LIST AssociatedStimulus
+ENDLIST
+LIST Other_Association
+ENDLIST
+LIST SimulationOptions
+UseAutomaticDoFile=false
+IncludeWaveDo=false
+Type=max
+RunTime=1000ns
+Resolution=1ps
+VsimOpt=
+EntityName=testbench
+TopInstanceName=<top>_0
+DoFileName=E:/User/Projets/E3CAR/03-Fpga/mP_8bit/copyBlaze/copyblaze/sim/rtl_sim/bin/run_tb_copyBlaze_ecoSystem.do
+DoFileName2=wave.do
+DoFileParams=
+DisplayDUTWave=false
+LogAllSignals=false
+DumpVCD=false
+VCDFileName=power.vcd
+ENDLIST
+LIST ModelSimLibPath
+UseCustomPath=FALSE
+LibraryPath=C:/Actel/Libero_v9.1/Designer/lib/modelsim/precompiled/vhdl/proasic3
+ENDLIST
+LIST GlobalFlowOptions
+GenerateHDLAfterSynthesis=FALSE
+GenerateHDLAfterPhySynthesis=FALSE
+RunDRCAfterSynthesis=FALSE
+AutoCheckConstraints=TRUE
+UpdateViewDrawIni=TRUE
+UpdateModelSimIni=TRUE
+NoIOMode=FALSE
+GenerateHDLFromSchematic=TRUE
+FlashProInputFile=pdb
+SmartGenCompileReport=T
+ENDLIST
+LIST PhySynthesisOptions
+ENDLIST
+LIST Profiles
+NAME="Synplify AE"
+FUNCTION="Synthesis"
+TOOL="Synplify"
+LOCATION="C:\Actel\Libero_v9.1\Synopsys\synplify_E201009A-1\bin\synplify_pro.exe"
+PARAM=""
+BATCH=0
+EndProfile
+NAME="ModelSim AE"
+FUNCTION="Simulation"
+TOOL="ModelSim"
+LOCATION="C:\Actel\Libero_v9.1\Model\win32acoem\modelsim.exe"
+PARAM=""
+BATCH=0
+EndProfile
+NAME="WFL"
+FUNCTION="Stimulus"
+TOOL="WFL"
+LOCATION="syncad.exe"
+PARAM="-pwflite"
+BATCH=0
+EndProfile
+NAME="FlashPro"
+FUNCTION="Program"
+TOOL="FlashPro"
+LOCATION="C:\Actel\Libero_v9.1\Designer\bin\FlashPro.exe"
+PARAM=""
+BATCH=0
+EndProfile
+ENDLIST
+LIST ProjectState5.1
+ENDLIST
+LIST ExcludePackageForSimulation
+ENDLIST
+LIST ExcludePackageForSynthesis
+ENDLIST
+LIST IncludeModuleForSimulation
+ENDLIST
+LIST CDBOrder
+ENDLIST
+LIST UserCustomizedFileList
+ENDLIST
+LIST OpenedFileList
+DESIGNFLOW:
+ACTIVE_VIEW:0
+ENDLIST

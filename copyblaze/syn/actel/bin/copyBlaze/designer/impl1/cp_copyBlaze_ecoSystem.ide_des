@@ -1,0 +1,19 @@
+KEY IDE_DES_TOOL "Ide"
+KEY IDE_DES_FAMILY "ProASIC3"
+KEY IDE_DES_DIE "IS4X4M1"
+KEY IDE_DES_PACKAGE "vq100"
+KEY IDE_DES_TOP_CELL_NAME "cp_copyBlaze_ecoSystem"
+KEY IDE_DES_KEEP_PHY_CONSTR "FALSE"
+KEY IDE_DES_KEEP_TIME_CONSTR "TRUE"
+KEY IDE_DES_LAYOUT_DONE "TRUE"
+KEY IDE_DES_BA_EXPORTED "FALSE"
+KEY IDE_DES_ERROR_FOUND "FALSE"
+KEY IDE_DES_ADB_PATH "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\syn\actel\bin\copyBlaze\designer\impl1\cp_copyBlaze_ecoSystem.adb"
+LIST SOURCE_FILES
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\syn\actel\bin\copyBlaze\synthesis\cp_copyBlaze_ecoSystem.edn;edn"
+ENDLIST
+LIST OPTIONAL_FILES
+VALUE "E:\User\Projets\E3CAR\03-Fpga\mP_8bit\copyBlaze\copyblaze\syn\actel\bin\copyBlaze\synthesis\cp_copyBlaze_ecoSystem_sdc.sdc;Used"
+ENDLIST
+LIST VCD_FILES
+ENDLIST
