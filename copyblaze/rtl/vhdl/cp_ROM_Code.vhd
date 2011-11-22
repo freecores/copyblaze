@@ -9,7 +9,7 @@
 --	  copyBalze µP code ROM content : width[18] x depth[1024]						 
 --                                                                              
 -- File history:                                                                
--- v1.0: Mon Nov 21 16:13:09 2011
+-- v1.0: Tue Nov 22 17:38:58 2011
 --                                                                              
 -- Targeted device: ProAsic A3P250 VQFP100                                      
 -- Author: AbdAllah Meziti                                                      
@@ -27,7 +27,7 @@ use ieee.numeric_std.all;
 --                                                                              
 --	                                                                             
 -- History:                                                                     
--- v1.0: Mon Nov 21 16:13:09 2011
+-- v1.0: Tue Nov 22 17:38:58 2011
 -- AM: Creation		                                                         
 -- ---------------------                                                        
 --				                                                                 
@@ -62,7 +62,7 @@ constant rom: rom_table := rom_table'(
 	x"0081F",	-- 000
 	x"00000",	-- 001
 	x"00100",	-- 002
-	x"3000E",	-- 003
+	x"30016",	-- 003
 	x"2C004",	-- 004
 	x"2C102",	-- 005
 	x"00800",	-- 006
@@ -72,21 +72,21 @@ constant rom: rom_table := rom_table'(
 	x"00803",	-- 00A
 	x"00804",	-- 00B
 	x"00805",	-- 00C
-	x"3400D",	-- 00D
-	x"19080",	-- 00E
-	x"1A100",	-- 00F
-	x"1C801",	-- 010
-	x"2B000",	-- 011
-	x"3000E",	-- 012
-	x"2A000",	-- 013
-	x"FFFFF",	-- 014
-	x"FFFFF",	-- 015
-	x"FFFFF",	-- 016
-	x"FFFFF",	-- 017
-	x"FFFFF",	-- 018
-	x"FFFFF",	-- 019
-	x"FFFFF",	-- 01A
-	x"FFFFF",	-- 01B
+	x"08004",	-- 00D
+	x"00806",	-- 00E
+	x"00807",	-- 00F
+	x"00808",	-- 010
+	x"02101",	-- 011
+	x"0080A",	-- 012
+	x"0080B",	-- 013
+	x"0080C",	-- 014
+	x"34015",	-- 015
+	x"19080",	-- 016
+	x"1A100",	-- 017
+	x"1C801",	-- 018
+	x"2B000",	-- 019
+	x"30016",	-- 01A
+	x"2A000",	-- 01B
 	x"FFFFF",	-- 01C
 	x"FFFFF",	-- 01D
 	x"FFFFF",	-- 01E
