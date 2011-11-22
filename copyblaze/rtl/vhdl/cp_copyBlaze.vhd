@@ -78,7 +78,7 @@ entity cp_copyBlaze is
 	--------------------------------------------------------------------------------
 	-- Signaux Wishbone Interface
 	--------------------------------------------------------------------------------
-		RST_I   			: in    std_ulogic;
+--		RST_I   			: in    std_ulogic;
 --		CLK_I   			: in    std_ulogic;
 					
 		ADR_O				: out	std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
@@ -89,10 +89,7 @@ entity cp_copyBlaze is
 
 		STB_O   			: out	std_ulogic;
 		ACK_I   			: in	std_ulogic;
-		CYC_O   			: out	std_ulogic;
-					
-		TAGN_O				: out	std_ulogic_vector(1 downto 0);
-		TAGN_I				: in	std_ulogic_vector(1 downto 0)
+		CYC_O   			: out	std_ulogic
 	);
 end cp_copyBlaze;
 
@@ -148,7 +145,8 @@ architecture rtl of cp_copyBlaze is
 	-- CONTROL --
 	-- ******* --
 	-- Banc
-	signal	iBancWrite			: std_ulogic;
+	signal	iBancWriteOP		,
+			iBancWrite			: std_ulogic;
 	-- Scratch
 	signal	iScratchWrite		: std_ulogic;
 	signal	iFetch				: std_ulogic;
@@ -188,8 +186,8 @@ architecture rtl of cp_copyBlaze is
 	-- WISHBONE
 	--------------------------------------------------------------------------------
 	-- Signaux Wishbone Interface
-	signal	iwbRST_I   			: std_ulogic;
-	signal	iwbCLK_I   			: std_ulogic;
+--	signal	iwbRST_I   			: std_ulogic;
+--	signal	iwbCLK_I   			: std_ulogic;
 
 	signal	iwbADR_O			: std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
 	signal	iwbDAT_I			: std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
@@ -201,8 +199,6 @@ architecture rtl of cp_copyBlaze is
 	signal	iwbACK_I   			: std_ulogic;
 	signal	iwbCYC   			: std_ulogic;
 
-	signal	iwbTAGN_O			: std_ulogic_vector(1 downto 0);
-	signal	iwbTAGN_I			: std_ulogic_vector(1 downto 0);
 	-- Signaux de management du Wishbone
 	signal	iWbWrSing			: std_ulogic;	-- "Single Write Cycle" Wishbone instruction
 	signal	iWbRdSing			: std_ulogic;	-- "Single Read Cycle" Wishbone instruction
@@ -676,7 +672,7 @@ begin
 			Return_o			=> iReturn,
 			ReturnI_o			=> iReturnI,
 			IEWrite_o			=> iIEWrite,
-			BancWrite_o			=> iBancWrite,
+			BancWrite_o			=> iBancWriteOP,
 			ScratchWrite_o		=> iScratchWrite,
 			OperationSelect_o	=> iOperationSelect,
 			FlagsWrite_o		=> iFlagsWrite,
@@ -713,7 +709,12 @@ begin
 	-- Banc --
 	iSxDataIn		<=	iScratchDataOut	when ( iFetch = '1' ) else
 						IN_PORT_i		when ( iInput = '1' ) else
+						iwbDAT_I		when ( iWbRdSing = '1') else
 						iAluResult		;
+
+	iBancWrite		<=	iWB_vOp			when ( iWbRdSing = '1') else
+						iBancWriteOP	;
+
 	-- Scratch --
 	iScratchPtr		<=	iSyData(iScratchPtr'range)	when ( iOperandSelect = '1' ) else
 						iss;
@@ -747,8 +748,8 @@ begin
 	-- WISHBONE
 	--------------------------------------------------------------------------------
 	-- InOuts
-	iwbRST_I		<= RST_I;
-	iwbCLK_I		<= CLK_I;
+	--iwbRST_I		<= RST_I;
+	--iwbCLK_I		<= CLK_I;
 
 	ADR_O			<= iwbADR_O;
 	iwbDAT_I		<= DAT_I;
@@ -760,9 +761,6 @@ begin
 	iwbACK_I		<= ACK_I;
 	CYC_O   		<= iwbCYC ;
 
-	TAGN_O			<= iwbTAGN_O;
-	iwbTAGN_I		<= TAGN_I;
-	
 	-- Management
 	iwbSTB_O	<=	iwbCYC;
 	iwbSEL_O	<=	(others => '0');
