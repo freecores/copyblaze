@@ -203,7 +203,7 @@ architecture rtl of cp_copyBlaze is
 	signal	iWbWrSing			: std_ulogic;	-- "Single Write Cycle" Wishbone instruction
 	signal	iWbRdSing			: std_ulogic;	-- "Single Read Cycle" Wishbone instruction
 
-	signal	iWB_inst			: std_ulogic;	-- WB Instruction
+	--signal	iWB_inst			: std_ulogic;	-- WB Instruction
 	signal	iWB_vHs				: std_ulogic;	-- WB valid Handshake
 	signal	iWB_vPC				: std_ulogic;	-- WB valid PC increment
 	signal	iWB_vOp				: std_ulogic;	-- WB valid Operation
@@ -748,24 +748,21 @@ begin
 	-- =================== --
 	-- Wishbone Management --
 	-- =================== --
-	iwbSTB_O	<=	iwbCYC;
-	iwbSEL_O	<=	(others => '0');
-
-	iWB_inst	<=	iWbRdSing or iWbWrSing;
-	iWB_vHs		<=	iwbCYC and iwbACK_I;
+	--iWB_inst	<=	iWbRdSing or iWbWrSing;	-- wishbone instruction
+	iWB_vHs		<=	iwbCYC and iwbACK_I;	-- wishbone VALID ACKNOWLEDGE
 	
 	-- Valid PC write --
 	-- ************** --
-	iWB_vPC	<=	((iPhase1) and (iWB_vHs));
+	iWB_vPC	<=	((iPhase1) and (iWB_vHs));	-- Valid PC incremente
 	
-	-- Then Valid Operation Write
+	-- Then Valid Operand Read/Write
 	-- ************************** --
 	wbvOp_Proc : process (Rst_i_n, Clk_i)
 	begin
 		if ( Rst_i_n = '0' ) then
 			iWB_vOp <=	'0';
 		elsif ( rising_edge(Clk_i) ) then
-			iWB_vOp <=	iWB_vPC;
+			iWB_vOp <=	iWB_vPC;			-- Valid Operand Read/Write
 		end if;
 	end process wbvOp_Proc;
 	
@@ -773,8 +770,10 @@ begin
 	-- ******************* --
 	wbCYC_Proc : process (Rst_i_n, Clk_i, iPhase2, iWB_vOp)
 	begin
+		-- reset or end of wishbone cycle : after wishbone Operand Validation
 		if ( ( Rst_i_n = '0' ) or ((iPhase2='1') and (iWB_vOp='1')) ) then
 			iwbCYC	<= '0';
+		-- valid a begining Wishbone Cycle: in Phase1 and wishbone instruction
 		elsif ( falling_edge(Clk_i) ) then
 			if ( (iPhase1='1') and ((iWbRdSing='1') or (iWbWrSing='1')) ) then
 				iwbCYC	<= '1';
@@ -788,15 +787,18 @@ begin
 	--iwbRST_I		<= RST_I;
 	--iwbCLK_I		<= CLK_I;
 
-	ADR_O			<= iwbADR_O;
-	iwbDAT_I		<= DAT_I;
-	DAT_O			<= iwbDAT_O;
-	WE_O    		<= iwbWE_O  ;
-	SEL_O			<= iwbSEL_O;
+	iwbSTB_O	<=	iwbCYC;
+	iwbSEL_O	<=	(others => '0');
 
-	STB_O   		<= iwbSTB_O ;
-	iwbACK_I		<= ACK_I;
-	CYC_O   		<= iwbCYC ;
+	ADR_O		<= iwbADR_O;
+	iwbDAT_I	<= DAT_I;
+	DAT_O		<= iwbDAT_O;
+	WE_O    	<= iwbWE_O  ;
+	SEL_O		<= iwbSEL_O;
+                
+	STB_O   	<= iwbSTB_O ;
+	iwbACK_I	<= ACK_I;
+	CYC_O   	<= iwbCYC ;
 
 	iwbWE_O		<= iWbWrSing;
 	iwbDAT_O	<= iSxData;
