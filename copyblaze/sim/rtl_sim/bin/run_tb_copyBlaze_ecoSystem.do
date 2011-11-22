@@ -26,7 +26,7 @@ vcom -93 -explicit -work presynth "${PROJECT_DIR}/rtl/vhdl/cp_copyBlaze.vhd"
 vcom -93 -explicit -work presynth "${PROJECT_DIR}/rtl/vhdl/cp_ROM_Code.vhd"
 vcom -93 -explicit -work presynth "${PROJECT_DIR}/rtl/vhdl/cp_copyBlaze_ecoSystem.vhd"
 
-vcom -93 -explicit -work presynth "${PROJECT_DIR}/sim/rtl_sim/src/WBOPRT08.vhd"
+vcom -93 -explicit -work presynth "${PROJECT_DIR}/sim/rtl_sim/src/wb_gpio/WBOPRT08.vhd"
 
 vcom -93 -explicit -work presynth "${PROJECT_DIR}/bench/vhdl/tb_copyBlaze_ecoSystem.vhd"
 
