@@ -46,7 +46,6 @@ entity cp_Toggle is
 	--------------------------------------------------------------------------------
 	-- Signaux Fonctionels
 	--------------------------------------------------------------------------------
-		Stall_i				: in std_ulogic;
 		Freeze_i			: in std_ulogic;
 
 		Phase1_o			: out std_ulogic;
@@ -66,7 +65,6 @@ architecture rtl of cp_Toggle is
 	type States_TYPE is
 	(
 		S_NORMAL		,	-- 
-		S_STALL			,	-- for Handshake Wishbone instruction. STALL overrides FREEZE.
 		S_FREEZE			-- for external "Freeze processor" signal
 	);
 	
@@ -124,18 +122,10 @@ begin
 		
 				case iFSM_State is
 					when S_NORMAL =>
-						if ( ( iPhase2 = '1' ) and (Stall_i = '1') ) then			-- STALL overrides FREEZE.
-							iFSM_State	<=	S_STALL;
-						end if;
 						if ( ( iPhase2 = '1' ) and (Freeze_i = '1') ) then
 							iFSM_State	<=	S_FREEZE;
 						end if;
 	
-					when S_STALL  =>
-						if ( ( iPhase2 = '1' ) and (Stall_i = '0') ) then
-							iFSM_State	<=	S_NORMAL;
-						end if;
-							
 					when S_FREEZE =>
 						if ( ( iPhase2 = '1' ) and (Freeze_i = '0') ) then
 							iFSM_State	<=	S_NORMAL;
@@ -148,12 +138,10 @@ begin
 
 	with iFSM_State select
 		iPhase1Out	<=	iPhase1	when S_NORMAL,
-						'0'		when S_STALL,	--	Phase 1 extended
 						'0'		when S_FREEZE,	--	Phase 1 to 0
 						'0'		when others;
 	with iFSM_State select
 		iPhase2Out	<=	iPhase2	when S_NORMAL,
-						'1'		when S_STALL,	--	Phase 2 extended
 						'0'		when S_FREEZE,	--	Phase 2 to 0
 						'0'		when others;
 

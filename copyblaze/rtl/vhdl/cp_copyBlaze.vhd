@@ -235,7 +235,6 @@ architecture rtl of cp_copyBlaze is
 		--------------------------------------------------------------------------------
 		-- Signaux Fonctionels
 		--------------------------------------------------------------------------------
-			Stall_i				: in std_ulogic;
 			Freeze_i			: in std_ulogic;
 
 			Phase1_o			: out std_ulogic;
@@ -480,7 +479,6 @@ begin
 		--------------------------------------------------------------------------------
 		-- Signaux Fonctionels
 		--------------------------------------------------------------------------------
-			Stall_i				=> '0',
 			Freeze_i			=> iFreeze ,
 
 			Phase1_o			=> iPhase1 ,
@@ -747,7 +745,46 @@ begin
 	--------------------------------------------------------------------------------
 	-- WISHBONE
 	--------------------------------------------------------------------------------
-	-- InOuts
+	-- =================== --
+	-- Wishbone Management --
+	-- =================== --
+	iwbSTB_O	<=	iwbCYC;
+	iwbSEL_O	<=	(others => '0');
+
+	iWB_inst	<=	iWbRdSing or iWbWrSing;
+	iWB_vHs		<=	iwbCYC and iwbACK_I;
+	
+	-- Valid PC write --
+	-- ************** --
+	iWB_vPC	<=	((iPhase1) and (iWB_vHs));
+	
+	-- Then Valid Operation Write
+	-- ************************** --
+	wbvOp_Proc : process (Rst_i_n, Clk_i)
+	begin
+		if ( Rst_i_n = '0' ) then
+			iWB_vOp <=	'0';
+		elsif ( rising_edge(Clk_i) ) then
+			iWB_vOp <=	iWB_vPC;
+		end if;
+	end process wbvOp_Proc;
+	
+	-- CYCle determination --
+	-- ******************* --
+	wbCYC_Proc : process (Rst_i_n, Clk_i, iPhase2, iWB_vOp)
+	begin
+		if ( ( Rst_i_n = '0' ) or ((iPhase2='1') and (iWB_vOp='1')) ) then
+			iwbCYC	<= '0';
+		elsif ( falling_edge(Clk_i) ) then
+			if ( (iPhase1='1') and ((iWbRdSing='1') or (iWbWrSing='1')) ) then
+				iwbCYC	<= '1';
+			end if;
+		end if;
+	end process wbCYC_Proc;
+	
+	-- ============== --
+	-- Inputs/Outputs --
+	-- ============== --
 	--iwbRST_I		<= RST_I;
 	--iwbCLK_I		<= CLK_I;
 
@@ -761,38 +798,6 @@ begin
 	iwbACK_I		<= ACK_I;
 	CYC_O   		<= iwbCYC ;
 
-	-- Management
-	iwbSTB_O	<=	iwbCYC;
-	iwbSEL_O	<=	(others => '0');
-
-	iWB_inst	<=	iWbRdSing or iWbWrSing;
-	iWB_vHs		<=	iwbCYC and iwbACK_I;
-	
-	-- Valid PC write
-	iWB_vPC	<=	((iPhase1) and (iWB_vHs));
-	-- Then Valid Operation Write
-	wbvOp_Proc : process (Rst_i_n, Clk_i)
-	begin
-		if ( Rst_i_n = '0' ) then
-			iWB_vOp <=	'0';
-		elsif ( rising_edge(Clk_i) ) then
-			iWB_vOp <=	iWB_vPC;
-		end if;
-	end process wbvOp_Proc;
-			
-	wbCYC_Proc : process (Rst_i_n, Clk_i, iPhase1, iPhase2, iWbRdSing, iWbWrSing, iWB_vOp)
-	begin
-		if ( falling_edge(Clk_i) and 
-				( (iPhase1='1') and ((iWbRdSing='1') or (iWbWrSing='1')) ) 
-			) then
-
-			iwbCYC	<= '1';
-		elsif ( ( Rst_i_n = '0' ) or ((iPhase2='1') and (iWB_vOp='1'))
-				) then
-			iwbCYC	<= '0';
-		end if;
-	end process wbCYC_Proc;
-	
 	iwbWE_O		<= iWbWrSing;
 	iwbDAT_O	<= iSxData;
 	iwbADR_O	<= iSyData;
