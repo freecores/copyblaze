@@ -26,12 +26,19 @@ start:
 		LOAD	value,		0x01	; 
 		LOAD	value,		0x02	; 
 
-		WBWRSING	total_high,	counter_port	; Result will be 496 (1F0 hex)
-;		WBWRSING	total_low,	waveform_port 
-
+		WBWRSING	total_high,	0x04	; Result will be 496 (1F0 hex)
 		LOAD	value,		0x03	; 
 		LOAD	value,		0x04	; 
 		LOAD	value,		0x05	; 
+		WBWRSING	total_low,	0x04 
+		LOAD	value,		0x06	; 
+		LOAD	value,		0x07	; 
+		LOAD	value,		0x08	; 
+		WBRDSING	total_high,	0x01	; Result will be 496 (1F0 hex)
+		LOAD	value,		0x0A	; 
+		LOAD	value,		0x0B	; 
+		LOAD	value,		0x0C	; 
+
 end:		
 		JUMP	end
 		;
