@@ -189,12 +189,17 @@ begin
 	-- INSTRUCTION DECODER
 	--------------------------------------------------------------------------------
 	-- Arithmetic Group
-	iAddSub			<=	'1' when ( iInstructionCode(4 downto 2) = "011" ) else '0';
+	iAddSub			<=	'1' when ((iInstructionCode = '0' & x"C") or
+								  (iInstructionCode = '0' & x"D") or
+								  (iInstructionCode = '0' & x"E") or
+								  (iInstructionCode = '0' & x"F")) else '0';
 	iCompare		<=	'1' when ( iInstructionCode = '0' & x"A" ) else '0';
 
 	-- Logic Group
 	iLoad			<=	'1' when ( iInstructionCode = '0' & x"0" ) else '0';
-	iLogic			<=	'1' when ( iInstructionCode(4 downto 2) = "001" ) else '0';
+	iLogic			<=	'1' when ((iInstructionCode = '0' & x"5") or
+								  (iInstructionCode = '0' & x"6") or
+								  (iInstructionCode = '0' & x"7")) else '0';
 	iTest			<=	'1' when ( iInstructionCode = '0' & x"9" ) else '0';
 
 	-- Shift and Rotate Group
