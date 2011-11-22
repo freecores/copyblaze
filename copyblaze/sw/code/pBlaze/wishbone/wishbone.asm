@@ -8,13 +8,20 @@
 		total_high	.EQU   s1
 		value		.EQU   s8
 		;
+
+		; ==========================================================
 start:
 		LOAD	value,		0x1F	; find sum of all values to 1F
 		LOAD	total_low,	0x00	; clear 16-bit total
 		LOAD	total_high,	0x00
 		
 		CALL	sum_to_value		; calculate sum of all numbers up to value
-		
+
+		OUTPUT	total_low,	counter_port	;	result : Value.LOW
+		OUTPUT	total_high,	waveform_port	;	result : Value.HIGH
+		; ==========================================================
+
+		; Test Wishbone Instructions		
 		LOAD	value,		0x00	; clear the register
 		LOAD	value,		0x01	; 
 		LOAD	value,		0x02	; 
