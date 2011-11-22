@@ -190,7 +190,8 @@ architecture rtl of cp_copyBlaze is
 --	signal	iwbCLK_I   			: std_ulogic;
 
 	signal	iwbADR_O			: std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
-	signal	iwbDAT_I			: std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
+	signal	iwbDAT_I			,
+			iwbDAT				: std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
 	signal	iwbDAT_O			: std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
 	signal	iwbWE_O    			: std_ulogic;
 	signal	iwbSEL_O			: std_ulogic_vector(1 downto 0);
@@ -203,10 +204,10 @@ architecture rtl of cp_copyBlaze is
 	signal	iWbWrSing			: std_ulogic;	-- "Single Write Cycle" Wishbone instruction
 	signal	iWbRdSing			: std_ulogic;	-- "Single Read Cycle" Wishbone instruction
 
-	--signal	iWB_inst			: std_ulogic;	-- WB Instruction
-	signal	iWB_vHs				: std_ulogic;	-- WB valid Handshake
-	signal	iWB_vPC				: std_ulogic;	-- WB valid PC increment
-	signal	iWB_vOp				: std_ulogic;	-- WB valid Operation
+	--signal	iWB_inst		: std_ulogic;	-- WB Instruction
+	signal	iWB_validHandshake	: std_ulogic;	-- WB valid Handshake
+	signal	iWB_validPC			: std_ulogic;	-- WB valid PC increment
+	signal	iWB_validOperand	: std_ulogic;	-- WB valid Operation
 
 --	-- Machine d'état
 --	type wbStates_TYPE is
@@ -707,10 +708,10 @@ begin
 	-- Banc --
 	iSxDataIn		<=	iScratchDataOut	when ( iFetch = '1' ) else
 						IN_PORT_i		when ( iInput = '1' ) else
-						iwbDAT_I		when ( iWbRdSing = '1') else
+						iwbDAT			when ( iWbRdSing = '1') else
 						iAluResult		;
 
-	iBancWrite		<=	iWB_vOp			when ( iWbRdSing = '1') else
+	iBancWrite		<=	iWB_validOperand			when ( iWbRdSing = '1') else
 						iBancWriteOP	;
 
 	-- Scratch --
@@ -739,7 +740,7 @@ begin
 	-- Evolution of the PC:
 	-- condition : in Phase1 and the processor is not in stall by wishbone
 	--iPcEnable		<=	(iPhase1 and not(iwbStall));
-	iPcEnable		<=	((iPhase1) and (iWB_vHs)) when (iwbCYC='1') else
+	iPcEnable		<=	((iPhase1) and (iWB_validHandshake)) when (iwbCYC='1') else
 						(iPhase1);
 
 	--------------------------------------------------------------------------------
@@ -749,29 +750,33 @@ begin
 	-- Wishbone Management --
 	-- =================== --
 	--iWB_inst	<=	iWbRdSing or iWbWrSing;	-- wishbone instruction
-	iWB_vHs		<=	iwbCYC and iwbACK_I;	-- wishbone VALID ACKNOWLEDGE
+	iWB_validHandshake		<=	iwbCYC and iwbACK_I;	-- wishbone VALID ACKNOWLEDGE
 	
 	-- Valid PC write --
 	-- ************** --
-	iWB_vPC	<=	((iPhase1) and (iWB_vHs));	-- Valid PC incremente
+	iWB_validPC	<=	((iPhase1) and (iWB_validHandshake));	-- Valid PC incremente
 	
 	-- Then Valid Operand Read/Write
 	-- ************************** --
 	wbvOp_Proc : process (Rst_i_n, Clk_i)
 	begin
 		if ( Rst_i_n = '0' ) then
-			iWB_vOp <=	'0';
+			iWB_validOperand <=	'0';
+			iwbDAT			<= (others => '0');
 		elsif ( rising_edge(Clk_i) ) then
-			iWB_vOp <=	iWB_vPC;			-- Valid Operand Read/Write
+			iWB_validOperand <=	iWB_validPC;			-- Valid Operand Read/Write
+			if ( iWB_validPC = '1' ) then
+				iwbDAT	<= iwbDAT_I;
+			end if;
 		end if;
 	end process wbvOp_Proc;
 	
 	-- CYCle determination --
 	-- ******************* --
-	wbCYC_Proc : process (Rst_i_n, Clk_i, iPhase2, iWB_vOp)
+	wbCYC_Proc : process (Rst_i_n, Clk_i, iPhase2, iWB_validOperand)
 	begin
 		-- reset or end of wishbone cycle : after wishbone Operand Validation
-		if ( ( Rst_i_n = '0' ) or ((iPhase2='1') and (iWB_vOp='1')) ) then
+		if ( ( Rst_i_n = '0' ) or ((iPhase2='1') and (iWB_validOperand='1')) ) then
 			iwbCYC	<= '0';
 		-- valid a begining Wishbone Cycle: in Phase1 and wishbone instruction
 		elsif ( falling_edge(Clk_i) ) then
