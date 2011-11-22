@@ -104,7 +104,7 @@ architecture behavior of tb_copyBlaze_ecoSystem is
 			--------------------------------------------------------------------------------
 			-- Signaux Wishbone Interface
 			--------------------------------------------------------------------------------
-				RST_I   			: in    std_ulogic;
+				--RST_I   			: in    std_ulogic;
 				--CLK_I   			: in    std_ulogic;
 							
 				ADR_O				: out	std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
