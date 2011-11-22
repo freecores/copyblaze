@@ -115,10 +115,7 @@ architecture behavior of tb_copyBlaze_ecoSystem is
 							
 				STB_O   			: out	std_ulogic;
 				ACK_I   			: in	std_ulogic;
-				CYC_O   			: out	std_ulogic;
-							
-				TAGN_O				: out	std_ulogic_vector(1 downto 0);
-				TAGN_I				: in	std_ulogic_vector(1 downto 0)
+				CYC_O   			: out	std_ulogic
 		);
 	end component;
 
@@ -211,7 +208,7 @@ begin
 			--------------------------------------------------------------------------------
 			-- Signaux Wishbone Interface
 			--------------------------------------------------------------------------------
-				RST_I   			=> iReset,
+				--RST_I   			=> iReset,
 				--CLK_I   			=> Clk_i,
 	
 				ADR_O				=> open,
@@ -222,10 +219,7 @@ begin
 	
 				STB_O   			=> iWbSTB,
 				ACK_I   			=> iWbACK,
-				CYC_O   			=> open,
-	
-				TAGN_O				=> open,
-				TAGN_I				=> (others => '0')
+				CYC_O   			=> open
 		);
 
 	WB_port : WBOPRT08

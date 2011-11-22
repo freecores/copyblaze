@@ -73,7 +73,7 @@ entity cp_copyBlaze_ecoSystem is
 		--------------------------------------------------------------------------------
 		-- Signaux Wishbone Interface
 		--------------------------------------------------------------------------------
-			RST_I   			: in    std_ulogic;
+--			RST_I   			: in    std_ulogic;
 --			CLK_I   			: in    std_ulogic;
 						
 			ADR_O				: out	std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
@@ -84,10 +84,7 @@ entity cp_copyBlaze_ecoSystem is
 	
 			STB_O   			: out	std_ulogic;
 			ACK_I   			: in	std_ulogic;
-			CYC_O   			: out	std_ulogic;
-						
-			TAGN_O				: out	std_ulogic_vector(1 downto 0);
-			TAGN_I				: in	std_ulogic_vector(1 downto 0)
+			CYC_O   			: out	std_ulogic
 	);
 end cp_copyBlaze_ecoSystem;
 
@@ -147,7 +144,7 @@ architecture rtl of cp_copyBlaze_ecoSystem is
 		--------------------------------------------------------------------------------
 		-- Signaux Wishbone Interface
 		--------------------------------------------------------------------------------
-			RST_I   			: in    std_ulogic;
+			--RST_I   			: in    std_ulogic;
 			--CLK_I   			: in    std_ulogic;
 						
 			ADR_O				: out	std_ulogic_vector(GEN_WIDTH_DATA-1 downto 0);
@@ -158,10 +155,7 @@ architecture rtl of cp_copyBlaze_ecoSystem is
 						
 			STB_O   			: out	std_ulogic;
 			ACK_I   			: in	std_ulogic;
-			CYC_O   			: out	std_ulogic;
-						
-			TAGN_O				: out	std_ulogic_vector(1 downto 0);
-			TAGN_I				: in	std_ulogic_vector(1 downto 0)
+			CYC_O   			: out	std_ulogic
 		);
 	end component;
 
@@ -234,7 +228,7 @@ begin
 		--------------------------------------------------------------------------------
 		-- Signaux Wishbone Interface
 		--------------------------------------------------------------------------------
-			RST_I   			=> RST_I,
+			--RST_I   			=> RST_I,
 			--CLK_I   			=> CLK_I,
 
 			ADR_O				=> ADR_O,
@@ -245,10 +239,7 @@ begin
 
 			STB_O   			=> STB_O,
 			ACK_I   			=> ACK_I,
-			CYC_O   			=> CYC_O,
-
-			TAGN_O				=> TAGN_O,
-			TAGN_I				=> TAGN_I
+			CYC_O   			=> CYC_O
 		);
 
 	-- *************** --
