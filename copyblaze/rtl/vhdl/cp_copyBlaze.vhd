@@ -802,6 +802,8 @@ begin
 
 	iwbWE_O		<= iWbWrSing;
 	iwbDAT_O	<= iSxData;
-	iwbADR_O	<= iSyData;
+	iwbADR_O	<= iSyData		when ( iOperandSelect = '1' ) else
+					ikk		;
+
 
 end rtl;
