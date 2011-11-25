@@ -9,7 +9,7 @@
 --	  copyBalze µP code ROM content : width[18] x depth[1024]						 
 --                                                                              
 -- File history:                                                                
--- v1.0: Tue Nov 22 17:38:58 2011
+-- v1.0: Fri Nov 25 10:44:46 2011
 --                                                                              
 -- Targeted device: ProAsic A3P250 VQFP100                                      
 -- Author: AbdAllah Meziti                                                      
@@ -27,7 +27,7 @@ use ieee.numeric_std.all;
 --                                                                              
 --	                                                                             
 -- History:                                                                     
--- v1.0: Tue Nov 22 17:38:58 2011
+-- v1.0: Fri Nov 25 10:44:46 2011
 -- AM: Creation		                                                         
 -- ---------------------                                                        
 --				                                                                 
@@ -59,34 +59,34 @@ architecture rtl of cp_ROM_Code is
 	type	rom_table is array (0 to ROM_LENGTH-1) of rom_word;
 
 constant rom: rom_table := rom_table'(
-	x"0081F",	-- 000
-	x"00000",	-- 001
-	x"00100",	-- 002
-	x"30016",	-- 003
-	x"2C004",	-- 004
-	x"2C102",	-- 005
-	x"00800",	-- 006
-	x"00801",	-- 007
-	x"00802",	-- 008
-	x"08104",	-- 009
-	x"00803",	-- 00A
-	x"00804",	-- 00B
-	x"00805",	-- 00C
-	x"08004",	-- 00D
-	x"00806",	-- 00E
-	x"00807",	-- 00F
-	x"00808",	-- 010
-	x"02101",	-- 011
-	x"0080A",	-- 012
-	x"0080B",	-- 013
-	x"0080C",	-- 014
-	x"34015",	-- 015
-	x"19080",	-- 016
-	x"1A100",	-- 017
-	x"1C801",	-- 018
-	x"2B000",	-- 019
-	x"30016",	-- 01A
-	x"2A000",	-- 01B
+	x"00800",	-- 000
+	x"00801",	-- 001
+	x"00802",	-- 002
+	x"08804",	-- 003
+	x"00803",	-- 004
+	x"00804",	-- 005
+	x"00805",	-- 006
+	x"08804",	-- 007
+	x"00806",	-- 008
+	x"00807",	-- 009
+	x"00808",	-- 00A
+	x"02001",	-- 00B
+	x"0080A",	-- 00C
+	x"0080B",	-- 00D
+	x"0080C",	-- 00E
+	x"3400F",	-- 00F
+	x"FFFFF",	-- 010
+	x"FFFFF",	-- 011
+	x"FFFFF",	-- 012
+	x"FFFFF",	-- 013
+	x"FFFFF",	-- 014
+	x"FFFFF",	-- 015
+	x"FFFFF",	-- 016
+	x"FFFFF",	-- 017
+	x"FFFFF",	-- 018
+	x"FFFFF",	-- 019
+	x"FFFFF",	-- 01A
+	x"FFFFF",	-- 01B
 	x"FFFFF",	-- 01C
 	x"FFFFF",	-- 01D
 	x"FFFFF",	-- 01E
