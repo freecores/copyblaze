@@ -198,7 +198,7 @@ add wave -noupdate -radix hexadecimal /tb_copyblaze_ecosystem_wb_gpio/uut/proces
 add wave -noupdate -radix hexadecimal /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_decodecontrol/ikk
 add wave -noupdate -radix hexadecimal /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_decodecontrol/iaaa
 add wave -noupdate -radix hexadecimal /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_decodecontrol/iinstructioncode
-add wave -noupdate -divider WISHBONE
+add wave -noupdate -divider {WISHBONE control}
 add wave -noupdate /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_toggle/clk_i
 add wave -noupdate /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_toggle/rst_i_n
 add wave -noupdate -color Cyan /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_toggle/phase1_o
@@ -220,11 +220,11 @@ add wave -noupdate /tb_copyblaze_ecosystem_wb_gpio/uut/processor/iwb_validpc
 add wave -noupdate /tb_copyblaze_ecosystem_wb_gpio/uut/processor/iwb_validoperand
 add wave -noupdate -divider {WISHBONE regbanc}
 add wave -noupdate /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/write_i
-add wave -noupdate -radix hexadecimal -expand -subitemconfig {/tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(0) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(1) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(2) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(3) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(4) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(5) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(6) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(7) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(8) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(9) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(10) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(11) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(12) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(13) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(14) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(15) {-height 15 -radix hexadecimal}} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem
+add wave -noupdate -radix hexadecimal -subitemconfig {/tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(0) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(1) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(2) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(3) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(4) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(5) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(6) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(7) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(8) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(9) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(10) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(11) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(12) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(13) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(14) {-height 15 -radix hexadecimal} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem(15) {-height 15 -radix hexadecimal}} /tb_copyblaze_ecosystem_wb_gpio/uut/processor/u_bancregister/ibancregmem
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {215250000 ps} 0}
-configure wave -namecolwidth 451
-configure wave -valuecolwidth 100
+WaveRestoreCursors {{Cursor 1} {207250000 ps} 0}
+configure wave -namecolwidth 430
+configure wave -valuecolwidth 39
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
 configure wave -snapdistance 10
@@ -237,4 +237,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {211148437 ps} {219351563 ps}
+WaveRestoreZoom {192424686 ps} {222075314 ps}
