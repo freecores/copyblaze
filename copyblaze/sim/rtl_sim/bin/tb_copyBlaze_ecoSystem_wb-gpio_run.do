@@ -1,5 +1,5 @@
 quietly set ACTELLIBNAME proasic3
-quietly set PROJECT_DIR "E:/User/Projets/E3CAR/03-Fpga/mP_8bit/copyblaze/copyblaze"
+do PATH.do
 
 if {[file exists presynth/_info]} {
    echo "INFO: Simulation library presynth already exists"
