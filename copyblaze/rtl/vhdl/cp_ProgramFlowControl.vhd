@@ -185,7 +185,7 @@ begin
 	-- Traitement des commande de Push & Pop de la stack
 	--------------------------------------------------------------------------------
 	iPush		<=	(iCondition and Call_i) or (Interrupt_i);
-	iPop		<=	(iCondition and Return_i);
+	iPop		<=	(iCondition and Return_i) or (ReturnI_i);
 	
 	--------------------------------------------------------------------------------
 	-- Instantiation du composant "cp_ProgramCounter"
