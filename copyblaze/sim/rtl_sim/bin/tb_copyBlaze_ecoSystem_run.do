@@ -1,5 +1,5 @@
 quietly set ACTELLIBNAME proasic3
-quietly set PROJECT_DIR "E:/User/Projets/E3CAR/03-Fpga/mP_8bit/copyblaze/copyblaze"
+do PATH.do
 
 if {[file exists presynth/_info]} {
    echo "INFO: Simulation library presynth already exists"
@@ -36,6 +36,6 @@ vsim -L proasic3 -L presynth  -t 1ps presynth.tb_copyBlaze_ecoSystem
 # run 1000ns
 
 radix hexadecimal
-do wave_tb_copyBlaze_ecoSystem.do
+do tb_copyBlaze_ecoSystem_wave.do
 
 run -all
