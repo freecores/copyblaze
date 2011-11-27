@@ -25,7 +25,7 @@ ENTITY = cp_ROM_Code
 .SUFFIXES : .psm .mem .vhd .psh
 
 # assemble and merge
-all:    $(ENTITY).vhd
+all:  clean  $(ENTITY).vhd 
 
 # assemble #
 $(ENTITY).mem:  $(ASM_SRC)
