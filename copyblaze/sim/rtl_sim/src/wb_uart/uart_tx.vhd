@@ -6,15 +6,15 @@ use ieee.numeric_std.all;
 -- UART Transmitter ---------------------------------------------------------
 entity uart_tx is
 	port (
-		clk      : in  std_logic;
-		reset    : in  std_logic;
+		clk      : in  std_ulogic;
+		reset    : in  std_ulogic;
 		--
-		divisor  : in  std_logic_vector(15 downto 0);
-		din      : in  std_logic_vector( 7 downto 0);
-		wr       : in  std_logic;
-		busy     : out std_logic;
+		divisor  : in  std_ulogic_vector(15 downto 0);
+		din      : in  std_ulogic_vector( 7 downto 0);
+		wr       : in  std_ulogic;
+		busy     : out std_ulogic;
 		--
-		txd      : out std_logic );
+		txd      : out std_ulogic );
 end uart_tx;
 
 
@@ -25,7 +25,7 @@ architecture rtl of uart_tx is
 -- Signals
 signal bitcount  : integer range 0 to 10;
 signal count     : unsigned(15 downto 0);
-signal shiftreg  : std_logic_vector(7 downto 0);
+signal shiftreg  : std_ulogic_vector(7 downto 0);
 
 begin
 

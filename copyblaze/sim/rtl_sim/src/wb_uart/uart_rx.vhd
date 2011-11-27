@@ -6,16 +6,16 @@ use ieee.numeric_std.all;
 -- UART Receiver ------------------------------------------------------------
 entity uart_rx is
 	port (
-		clk      : in  std_logic;
-		reset    : in  std_logic;
+		clk      : in  std_ulogic;
+		reset    : in  std_ulogic;
 		--
-		divisor  : in  std_logic_vector(15 downto 0);
-		dout     : out std_logic_vector( 7 downto 0);
-		avail    : out std_logic;
-		error    : out std_logic;
-		clear    : in  std_logic;
+		divisor  : in  std_ulogic_vector(15 downto 0);
+		dout     : out std_ulogic_vector( 7 downto 0);
+		avail    : out std_ulogic;
+		error    : out std_ulogic;
+		clear    : in  std_ulogic;
 		--
-		rxd      : in  std_logic );
+		rxd      : in  std_ulogic );
 end uart_rx;
 
 -----------------------------------------------------------------------------
@@ -25,9 +25,9 @@ architecture rtl of uart_rx is
 -- Signals
 signal bitcount  : integer range 0 to 10;
 signal count     : unsigned(15 downto 0);
-signal shiftreg  : std_logic_vector(7 downto 0);
-signal rxh       : std_logic_vector(2 downto 0);
-signal rxd2      : std_logic;
+signal shiftreg  : std_ulogic_vector(7 downto 0);
+signal rxh       : std_ulogic_vector(2 downto 0);
+signal rxd2      : std_ulogic;
 
 begin
 

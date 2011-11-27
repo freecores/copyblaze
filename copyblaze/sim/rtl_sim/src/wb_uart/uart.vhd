@@ -1,26 +1,27 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 -----------------------------------------------------------------------------
 -- UART ---------------------------------------------------------------------
 entity myuart is
 	port (
-		clk       : in  std_logic;
-		reset     : in  std_logic;
+		clk       : in  std_ulogic;
+		reset     : in  std_ulogic;
 		--
-		divisor   : in  std_logic_vector(15 downto 0);
-		txdata    : in  std_logic_vector( 7 downto 0);
-		rxdata    : out std_logic_vector( 7 downto 0);
-		wr        : in  std_logic;
-		rd        : in  std_logic;
-		tx_avail  : out std_logic;
-		tx_busy   : out std_logic;
-		rx_avail  : out std_logic;
-		rx_full   : out std_logic;
-		rx_error  : out std_logic;
+		divisor   : in  std_ulogic_vector(15 downto 0);
+		txdata    : in  std_ulogic_vector( 7 downto 0);
+		rxdata    : out std_ulogic_vector( 7 downto 0);
+		wr        : in  std_ulogic;
+		rd        : in  std_ulogic;
+		tx_avail  : out std_ulogic;
+		tx_busy   : out std_ulogic;
+		rx_avail  : out std_ulogic;
+		rx_full   : out std_ulogic;
+		rx_error  : out std_ulogic;
 		-- 
-		uart_rxd  : in  std_logic;
-		uart_txd  : out std_logic );
+		uart_rxd  : in  std_ulogic;
+		uart_txd  : out std_ulogic );
 end myuart;
 
 -----------------------------------------------------------------------------
@@ -31,45 +32,45 @@ architecture rtl of myuart is
 -- component declarations ---------------------------------------------------
 component uart_rx is
 	port (
-		clk      : in  std_logic;
-		reset    : in  std_logic;
+		clk      : in  std_ulogic;
+		reset    : in  std_ulogic;
 		--
-		divisor  : in  std_logic_vector(15 downto 0);
-		dout     : out std_logic_vector(7 downto 0);
-		avail    : out std_logic;
-		error    : out std_logic;
-		clear    : in  std_logic;
+		divisor  : in  std_ulogic_vector(15 downto 0);
+		dout     : out std_ulogic_vector(7 downto 0);
+		avail    : out std_ulogic;
+		error    : out std_ulogic;
+		clear    : in  std_ulogic;
 		--
-		rxd      : in  std_logic );
+		rxd      : in  std_ulogic );
 end component;
 
 component uart_tx is
 	port (
-		clk      : in  std_logic;
-		reset    : in  std_logic;
+		clk      : in  std_ulogic;
+		reset    : in  std_ulogic;
 		--  
-		divisor  : in  std_logic_vector(15 downto 0);
-		din      : in  std_logic_vector(7 downto 0);
-		wr       : in  std_logic;
-		busy     : out std_logic;
+		divisor  : in  std_ulogic_vector(15 downto 0);
+		din      : in  std_ulogic_vector(7 downto 0);
+		wr       : in  std_ulogic;
+		busy     : out std_ulogic;
 		--
-		txd      : out std_logic );
+		txd      : out std_ulogic );
 end component;		
 
 -----------------------------------------------------------------------------
 -- local signals ------------------------------------------------------------
-signal utx_busy   : std_logic;
-signal utx_wr     : std_logic;
+signal utx_busy   : std_ulogic;
+signal utx_wr     : std_ulogic;
 
-signal urx_dout   : std_logic_vector(7 downto 0);
-signal urx_avail  : std_logic;
-signal urx_clear  : std_logic;
-signal urx_error  : std_logic;
+signal urx_dout   : std_ulogic_vector(7 downto 0);
+signal urx_avail  : std_ulogic;
+signal urx_clear  : std_ulogic;
+signal urx_error  : std_ulogic;
 
-signal txbuf      : std_logic_vector(7 downto 0);
-signal txbuf_full : std_logic;
-signal rxbuf      : std_logic_vector(7 downto 0);
-signal rxbuf_full : std_logic;
+signal txbuf      : std_ulogic_vector(7 downto 0);
+signal txbuf_full : std_ulogic;
+signal rxbuf      : std_ulogic_vector(7 downto 0);
+signal rxbuf_full : std_ulogic;
 
 begin
 
