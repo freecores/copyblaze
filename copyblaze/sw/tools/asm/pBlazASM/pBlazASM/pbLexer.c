@@ -111,7 +111,7 @@ bool lex( char * line, const bool mode ) {
 			} else if ( *s == ' ' || iscntrl( *s ) ) {
 				// white space, 'space' and all control characters, except \0, \r and \n
 				s++ ;
-			} else if ( mode && ( isalnum( *s ) ) ) {
+			} else if ( mode && ( isalnum( *s ) || *s == '_'  ) ) {
 				// KCPSM mode, all alphanum is accepted for idents, could be hex values
 				// ident
 				start = s++ ;
