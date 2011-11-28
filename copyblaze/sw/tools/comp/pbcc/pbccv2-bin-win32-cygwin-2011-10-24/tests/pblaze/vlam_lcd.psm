@@ -1,0 +1,303 @@
+;--------------------------------------------------------
+; File Created by SDCC : free open source ANSI-C Compiler
+; Version 3.0.1 #6227 (Oct 24 2011) (CYGWIN)
+; This file was generated Sun Nov 27 22:32:29 2011
+;--------------------------------------------------------
+;--------------------------------------------------------
+; global & static initialisations
+;--------------------------------------------------------
+
+	LOAD	sF, 3f
+	JUMP	__sdcc_program_startup
+;--------------------------------------------------------
+; Home
+;--------------------------------------------------------
+__sdcc_program_startup:
+	CALL	_main
+;	return from main will lock up
+__sdcc_loop:
+	JUMP	__sdcc_loop
+;--------------------------------------------------------
+; code
+;--------------------------------------------------------
+	;	vlam_lcd.c:30: void delayms() {
+_delayms:
+	;	vlam_lcd.c:34: for (i = 0; i < 100; i++)
+	LOAD	s0, 00
+_L00105:
+	LOAD	s1, s0
+	COMPARE	s1, 64
+	JUMP	C, _LC00136
+	JUMP	_L00109
+_LC00136:
+	;	vlam_lcd.c:35: for (j = 0; j < 255; j++);
+	LOAD	s1, 00
+_L00101:
+	LOAD	s2, s1
+	COMPARE	s2, ff
+	JUMP	C, _LC00137
+	JUMP	_L00107
+_LC00137:
+	ADD	s1, 01
+	JUMP	_L00101
+_L00107:
+	;	vlam_lcd.c:34: for (i = 0; i < 100; i++)
+	ADD	s0, 01
+	JUMP	_L00105
+_L00109:
+	RETURN
+	;	vlam_lcd.c:40: void delay1s() {
+_delay1s:
+	;	vlam_lcd.c:43: for (i = 0; i < 100; i++) 
+	LOAD	s0, 00
+_L00115:
+	LOAD	s1, s0
+	COMPARE	s1, 64
+	JUMP	C, _LC00138
+	JUMP	_L00119
+_LC00138:
+	;	vlam_lcd.c:44: delayms();
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	;	vlam_lcd.c:43: for (i = 0; i < 100; i++) 
+	ADD	s0, 01
+	JUMP	_L00115
+_L00119:
+	RETURN
+	;	vlam_lcd.c:48: void lcd_init() {
+_lcd_init:
+	;	vlam_lcd.c:49: lcd_cmd(LCD_CLEAR_DISPLAY);
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	LOAD	s0, 01
+	OUTPUT	s0, 70
+	CALL	_delayms
+	LOAD	s0, 02
+	OUTPUT	s0, 71
+	CALL	_delayms
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	;	vlam_lcd.c:50: lcd_cmd(LCD_CURSOR_AT_HOME);
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	LOAD	s0, 02
+	OUTPUT	s0, 70
+	CALL	_delayms
+	LOAD	s0, 02
+	OUTPUT	s0, 71
+	CALL	_delayms
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	;	vlam_lcd.c:51: lcd_cmd(0x38); // LCD function set - osmibitovy prenos, displej slozen ze dvou polovin, font 5x8
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	LOAD	s0, 38
+	OUTPUT	s0, 70
+	CALL	_delayms
+	LOAD	s0, 02
+	OUTPUT	s0, 71
+	CALL	_delayms
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	;	vlam_lcd.c:52: lcd_cmd(0x0E); // LCD display - zobrazeni kurzoru, zapnuti displeje
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	LOAD	s0, 0e
+	OUTPUT	s0, 70
+	CALL	_delayms
+	LOAD	s0, 02
+	OUTPUT	s0, 71
+	CALL	_delayms
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	;	vlam_lcd.c:53: lcd_cmd(0x06); // LCD entry mode - automaticka inkrementace adresy kurzoru
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	LOAD	s0, 06
+	OUTPUT	s0, 70
+	CALL	_delayms
+	LOAD	s0, 02
+	OUTPUT	s0, 71
+	CALL	_delayms
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	RETURN
+	;	vlam_lcd.c:57: void lcd_upd(unsigned char val) {
+_lcd_upd:
+	LOAD	s0, sB
+	;	vlam_lcd.c:58: lcd_cmd(0x80); //cursor zac  
+	LOAD	s1, 00
+	OUTPUT	s1, 71
+	LOAD	s1, 80
+	OUTPUT	s1, 70
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 02
+	OUTPUT	s1, 71
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 00
+	OUTPUT	s1, 71
+	;	vlam_lcd.c:59: lcd_wr('V');
+	LOAD	s1, 00
+	OUTPUT	s1, 71
+	LOAD	s1, 56
+	OUTPUT	s1, 70
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 03
+	OUTPUT	s1, 71
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 01
+	OUTPUT	s1, 71
+	;	vlam_lcd.c:60: lcd_wr('L');
+	LOAD	s1, 00
+	OUTPUT	s1, 71
+	LOAD	s1, 4c
+	OUTPUT	s1, 70
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 03
+	OUTPUT	s1, 71
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 01
+	OUTPUT	s1, 71
+	;	vlam_lcd.c:61: lcd_wr('A');
+	LOAD	s1, 00
+	OUTPUT	s1, 71
+	LOAD	s1, 41
+	OUTPUT	s1, 70
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 03
+	OUTPUT	s1, 71
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 01
+	OUTPUT	s1, 71
+	;	vlam_lcd.c:62: lcd_wr('M');
+	LOAD	s1, 00
+	OUTPUT	s1, 71
+	LOAD	s1, 4d
+	OUTPUT	s1, 70
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 03
+	OUTPUT	s1, 71
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 01
+	OUTPUT	s1, 71
+	;	vlam_lcd.c:63: lcd_wr(' ');
+	LOAD	s1, 00
+	OUTPUT	s1, 71
+	LOAD	s1, 20
+	OUTPUT	s1, 70
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 03
+	OUTPUT	s1, 71
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delayms
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	LOAD	s1, 01
+	OUTPUT	s1, 71
+	;	vlam_lcd.c:64: val = val & 0xF;
+	LOAD	s1, s0
+	AND	s1, 0f
+	;	vlam_lcd.c:65: val = (val > 9) ? 55 + val : 48 + val;
+	LOAD	s0, 09
+	COMPARE	s0, s1
+	JUMP	C, _LC00139
+	JUMP	_L00127
+_LC00139:
+	LOAD	s0, s1
+	ADD	s0, 37
+	LOAD	s2, s0
+	JUMP	_L00128
+_L00127:
+	LOAD	s0, s1
+	ADD	s0, 30
+	LOAD	s2, s0
+_L00128:
+	LOAD	s1, s2
+	;	vlam_lcd.c:66: lcd_wr(val);
+	LOAD	s0, 00
+	OUTPUT	s0, 71
+	OUTPUT	s1, 70
+	CALL	_delayms
+	LOAD	s0, 03
+	OUTPUT	s0, 71
+	CALL	_delayms
+	LOAD	s0, 01
+	OUTPUT	s0, 71
+	RETURN
+	;	vlam_lcd.c:71: void main() {
+_main:
+	;	vlam_lcd.c:74: lcd_init();
+	CALL	_lcd_init
+	;	vlam_lcd.c:76: while (1) {
+	LOAD	s0, 00
+_L00131:
+	;	vlam_lcd.c:77: lcd_upd(val);
+	STORE	s0, (sF)
+	SUB	sF, 01
+	LOAD	sB, s0
+	CALL	_lcd_upd
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	;	vlam_lcd.c:78: set_led(val++);
+	LOAD	s1, s0
+	ADD	s0, 01
+	OUTPUT	s1, 80
+	;	vlam_lcd.c:79: delay1s(); 
+	STORE	s0, (sF)
+	SUB	sF, 01
+	CALL	_delay1s
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	JUMP	_L00131
+	RETURN
+;--------------------------------------------------------
+; interrupt vector 
+;--------------------------------------------------------

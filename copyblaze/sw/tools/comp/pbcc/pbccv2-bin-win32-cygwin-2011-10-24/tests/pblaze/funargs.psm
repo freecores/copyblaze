@@ -1,0 +1,60 @@
+;--------------------------------------------------------
+; File Created by SDCC : free open source ANSI-C Compiler
+; Version 3.0.1 #6227 (Oct 24 2011) (CYGWIN)
+; This file was generated Mon Nov 28 08:43:45 2011
+;--------------------------------------------------------
+;--------------------------------------------------------
+; global & static initialisations
+;--------------------------------------------------------
+
+	LOAD	sF, 3f
+	JUMP	__sdcc_program_startup
+;--------------------------------------------------------
+; Home
+;--------------------------------------------------------
+__sdcc_program_startup:
+	CALL	_main
+;	return from main will lock up
+__sdcc_loop:
+	JUMP	__sdcc_loop
+;--------------------------------------------------------
+; code
+;--------------------------------------------------------
+	;	funargs.c:1: char f(char arg, char arg2)
+_f:
+	LOAD	s0, sB
+	LOAD	s1, sC
+	;	funargs.c:3: return arg+arg2;
+	ADD	s0, s1
+	LOAD	sB, s0
+	RETURN
+	;	funargs.c:7: void main()
+_main:
+	;	funargs.c:9: char i = 0;
+	LOAD	s0, 00
+_L00103:
+	;	funargs.c:10: for(; i < 10; i++)
+	TEST	s0, 80
+	JUMP	C, _LC00111
+	COMPARE	s0, 0a
+	JUMP	C, _LC00111
+	JUMP	_L00107
+_LC00111:
+	;	funargs.c:12: i++;
+	ADD	s0, 01
+	;	funargs.c:13: f(i, 17);
+	STORE	s0, (sF)
+	SUB	sF, 01
+	LOAD	sB, s0
+	LOAD	sC, 11
+	CALL	_f
+	ADD	sF, 01
+	FETCH	s0, (sF)
+	;	funargs.c:10: for(; i < 10; i++)
+	ADD	s0, 01
+	JUMP	_L00103
+_L00107:
+	RETURN
+;--------------------------------------------------------
+; interrupt vector 
+;--------------------------------------------------------
