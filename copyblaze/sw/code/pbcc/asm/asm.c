@@ -10,7 +10,7 @@ endasm
 int main(void)
 {
 __asm
-INPUT s0
+INPUT s0, 05
 __endasm;
 i = 10;
 return i;
