@@ -4,7 +4,7 @@ DRIVE=/cygdrive/c
 PATH_TOP=../../../..
 PATH_TOOL=$(PATH_TOP)/sw/tools
 PATH_ASM=asm
-PATH_COMP=comp/pbcc/pbccv2-bin-win32-cygwin-2011-10-24
+PATH_COMP=comp/pbcc/sdcc
 
 CC=$(PATH_TOOL)/$(PATH_COMP)/bin/sdcc.exe
 AS=$(PATH_TOOL)/$(PATH_ASM)/pBlazASM/pBlazASM/pBlazASM.exe
