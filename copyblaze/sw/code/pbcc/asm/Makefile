@@ -11,7 +11,7 @@ AS=$(PATH_TOOL)/$(PATH_ASM)/pBlazASM/pBlazASM/pBlazASM.exe
 MG=$(PATH_TOOL)/$(PATH_ASM)/pBlazASM/cpBlazeMRG/cpBlazeMRG.exe
 
 # output directory
-DIROUT=$(PATH_TOP)/rtl/vhdl
+DIROUT=$(PATH_TOP)/rtl/vhdl/ip/rom/ip/rom
 
 # remove command
 RM = rm -f -v
