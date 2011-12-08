@@ -8,7 +8,7 @@ AS=$(TOOLPATH)/pBlazASM/pBlazASM/pBlazASM.exe
 #MG=$(TOOLPATH)/pBlazASM/pBlazMRG/pBlazMRG.exe
 MG=$(TOOLPATH)/pBlazASM/cpBlazeMRG/cpBlazeMRG.exe
 
-DIROUT=$(TOPPATH)/rtl/vhdl
+DIROUT=$(TOPPATH)/rtl/vhdl/ip/rom
 
 RM = rm -f -v
 CP = cp
